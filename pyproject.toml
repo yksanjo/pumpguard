@@ -1,0 +1,48 @@
+[project]
+name = "pumpguard"
+version = "0.1.0"
+description = "Local agent that watches pump.fun in real-time, scores launches, checks deployer history, and alerts you before you ape."
+authors = [{ name = "Yoshi Kondo", email = "yoshi@musicailab.com" }]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["solana", "pumpfun", "ai-agent", "rug-detection", "security"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "httpx>=0.27.0",
+    "websockets>=12.0",
+    "pydantic>=2.0.0",
+    "click>=8.1.0",
+    "rich>=13.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-httpx>=0.30.0",
+]
+
+[project.scripts]
+pumpguard = "pumpguard.__main__:cli"
+
+[project.urls]
+Homepage = "https://github.com/yksanjo/pumpguard"
+Repository = "https://github.com/yksanjo/pumpguard"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["pumpguard*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
